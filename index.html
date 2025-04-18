@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nirmala Khadka | Full Stack Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #8b5cf6;
+            --secondary: #6366f1;
+            --accent: #ec4899;
+            --dark: #1e293b;
+            --light: #f8fafc;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+            background-color: var(--light);
+            overflow-x: hidden;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+        }
+        
+        .project-card {
+            transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+            overflow: hidden;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.9) 0%, rgba(99, 102, 241, 0.9) 100%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            z-index: 1;
+        }
+        
+        .project-card:hover::before {
+            opacity: 0.9;
+        }
+        
+        .project-card .project-links {
+            opacity: 0;
+            transition: all 0.5s ease;
+            transform: translateY(20px);
+            z-index: 2;
+        }
+        
+        .project-card:hover .project-links {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .skill-badge {
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .skill-badge:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .floating {
+            animation: floating 6s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(2deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+        
+        .typewriter {
+            overflow: hidden;
+            border-right: .15em solid var(--primary);
+            white-space: nowrap;
+            margin: 0 auto;
+            letter-spacing: .15em;
+            animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: var(--primary); }
+        }
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+        
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        .glow {
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes glow {
+            from {
+                box-shadow: 0 0 5px rgba(139, 92, 246, 0.5);
+            }
+            to {
+                box-shadow: 0 0 20px rgba(139, 92, 246, 0.8);
+            }
+        }
+        
+        .rotate-3d {
+            transform-style: preserve-3d;
+            transition: transform 1s;
+        }
+        
+        .rotate-3d:hover {
+            transform: rotateY(20deg) rotateX(10deg);
+        }
+        
+        .gradient-border {
+            position: relative;
+            border-radius: 16px;
+        }
+        
+        .gradient-border::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 18px;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+        
+        .gradient-border:hover::before {
+            opacity: 1;
+        }
+        
+        .wave {
+            animation: wave 2s infinite;
+            transform-origin: 70% 70%;
+            display: inline-block;
+        }
+        
+        @keyframes wave {
+            0% { transform: rotate(0deg); }
+            10% { transform: rotate(14deg); }
+            20% { transform: rotate(-8deg); }
+            30% { transform: rotate(14deg); }
+            40% { transform: rotate(-4deg); }
+            50% { transform: rotate(10deg); }
+            60% { transform: rotate(0deg); }
+            100% { transform: rotate(0deg); }
+        }
+        
+        .text-gradient-animate {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 50%, var(--secondary) 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientText 5s ease infinite;
+        }
+        
+        @keyframes gradientText {
+            0% { background-position: 0% center; }
+            50% { background-position: 100% center; }
+            100% { background-position: 0% center; }
+        }
+        
+        .morph {
+            animation: morph 8s ease-in-out infinite;
+            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+        }
+        
+        @keyframes morph {
+            0% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+            50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+            100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+        }
+    </style>
+</head>
+<body class="relative overflow-x-hidden">
+    <div id="particles-js" class="fixed inset-0 z-0"></div>
+    <nav class="fixed w-full z-50 glass-effect">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <a href="#" class="text-2xl font-bold gradient-text animate__animated animate__fadeIn flex items-center">
+                    <span class="bg-gradient-to-r from-purple-600 to-pink-600 text-white p-2 rounded-lg mr-2">NK</span>
+                    <span class="hidden sm:inline">Nirmala Khadka</span>
+                </a>
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#home" class="text-gray-700 hover:text-purple-600 transition-colors duration-300 font-medium relative group">
+                        Home
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-purple-600 transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#about" class="text-gray-700 hover:text-purple-600 transition-colors duration-300 font-medium relative group">
+                        About
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-purple-600 transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#skills" class="text-gray-700 hover:text-purple-600 transition-colors duration-300 font-medium relative group">
+                        Skills
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-purple-600 transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#projects" class="text-gray-700 hover:text-purple-600 transition-colors duration-300 font-medium relative group">
+                        Projects
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-purple-600 transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#contact" class="text-gray-700 hover:text-purple-600 transition-colors duration-300 font-medium relative group">
+                        Contact
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-purple-600 transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#" class="ml-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white px-6 py-2 rounded-full hover:shadow-lg transition-all duration-300 flex items-center">
+                        <i class="https://drive.google.com/file/d/1Q4Fti_nhwmPEqUldEUSqOn3b3bv32ADk/view?usp=drive_link"></i> Resume
+                    </a>
+                </div>
+                <button class="md:hidden focus:outline-none text-gray-700 hover:text-purple-600 transition-colors duration-300" onclick="toggleMenu()">
+                    <i class="bi bi-list text-3xl"></i>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-white/90 backdrop-blur-lg border-t glass-effect">
+            <div class="container mx-auto px-4 py-2 flex flex-col space-y-3">
+                <a href="#home" class="text-gray-700 hover:text-purple-600 py-3 transition-colors duration-300 border-b border-gray-100 flex items-center">
+                    <i class="bi bi-house-door mr-2"></i> Home
+                </a>
+                <a href="#about" class="text-gray-700 hover:text-purple-600 py-3 transition-colors duration-300 border-b border-gray-100 flex items-center">
+                    <i class="bi bi-person mr-2"></i> About
+                </a>
+                <a href="#skills" class="text-gray-700 hover:text-purple-600 py-3 transition-colors duration-300 border-b border-gray-100 flex items-center">
+                    <i class="bi bi-tools mr-2"></i> Skills
+                </a>
+                <a href="#projects" class="text-gray-700 hover:text-purple-600 py-3 transition-colors duration-300 border-b border-gray-100 flex items-center">
+                    <i class="bi bi-code-square mr-2"></i> Projects
+                </a>
+                <a href="#contact" class="text-gray-700 hover:text-purple-600 py-3 transition-colors duration-300 flex items-center">
+                    <i class="bi bi-envelope mr-2"></i> Contact
+                </a>
+                <a href="#" class="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-6 py-3 rounded-lg hover:shadow-lg transition-all duration-300 flex items-center justify-center mb-4">
+                    <i class="https://drive.google.com/file/d/1Q4Fti_nhwmPEqUldEUSqOn3b3bv32ADk/view?usp=drive_link"></i> Download Resume
+                </a>
+            </div>
+        </div>
+    </nav>
+    <section id="home" class="pt-24 pb-12 md:pt-32 md:pb-24 relative overflow-hidden min-h-screen flex items-center">
+        <div class="absolute inset-0 z-0">
+            <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-purple-100/50 to-blue-100/50"></div>
+            <div class="absolute top-0 left-0 w-full h-full bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10"></div>
+        </div>
+        <div class="absolute top-20 left-20 w-40 h-40 rounded-full bg-purple-200/30 blur-xl animate-pulse"></div>
+        <div class="absolute bottom-10 right-20 w-60 h-60 rounded-full bg-pink-200/30 blur-xl animate-pulse delay-300"></div>
+        <div class="absolute top-1/3 right-1/4 w-32 h-32 rounded-full bg-blue-200/30 blur-xl animate-pulse delay-700"></div>
+        
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="text-center lg:text-left animate__animated animate__fadeIn">
+                    <h1 class="text-4xl md:text-6xl font-bold mb-4 leading-tight">
+                        Hi, I'm <span class="text-gradient-animate typewriter">Nirmala Khadka</span>
+                    </h1>
+                    <div class="text-xl md:text-2xl text-gray-600 mb-8">
+                        <span class="inline-block">Full Stack Developer</span>
+                        <span class="mx-2">•</span>
+                        <span class="inline-block">UI/UX Designer</span>
+                        <span class="mx-2">•</span>
+                        <span class="inline-block">Tech Enthusiast</span>
+                    </div>
+                    <div class="flex flex-wrap justify-center lg:justify-start gap-4">
+                        <a href="#contact" class="relative overflow-hidden group">
+                            <div class="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 group-hover:from-purple-700 group-hover:to-pink-700 transition-all duration-500 rounded-lg"></div>
+                            <div class="relative bg-gradient-to-r from-purple-600 to-pink-600 group-hover:from-purple-700 group-hover:to-pink-700 bg-clip-text text-transparent transition-all duration-500 px-8 py-3 rounded-lg hover:text-white">
+                                <span class="relative z-10 flex items-center">
+                                    Get in Touch <i class="bi bi-arrow-right ml-2 group-hover:translate-x-1 transition-transform duration-300"></i>
+                                </span>
+                            </div>
+                        </a>
+                        <a href="#projects" class="relative overflow-hidden group border-2 border-purple-600 text-purple-600 px-8 py-3 rounded-lg hover:bg-purple-50 transition-all duration-300 flex items-center">
+                            <span class="relative z-10 flex items-center">
+                                View Work <i class="bi bi-arrow-down-circle ml-2 group-hover:translate-y-1 transition-transform duration-300"></i>
+                            </span>
+                        </a>
+                    </div>
+                    
+                    <div class="mt-12 flex justify-center lg:justify-start space-x-6">
+                        <a href="#" class="w-12 h-12 rounded-full bg-white shadow-md flex items-center justify-center text-purple-600 hover:bg-purple-600 hover:text-white transition-all duration-300 transform hover:-translate-y-1">
+                            <i class="bi bi-github text-xl"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/nirmala-khadka-668007311?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="w-12 h-12 rounded-full bg-white shadow-md flex items-center justify-center text-blue-600 hover:bg-blue-600 hover:text-white transition-all duration-300 transform hover:-translate-y-1">
+                            <i class="bi bi-linkedin text-xl"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 rounded-full bg-white shadow-md flex items-center justify-center text-sky-400 hover:bg-sky-400 hover:text-white transition-all duration-300 transform hover:-translate-y-1">
+                            <i class="bi bi-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 rounded-full bg-white shadow-md flex items-center justify-center text-pink-600 hover:bg-pink-600 hover:text-white transition-all duration-300 transform hover:-translate-y-1">
+                            <i class="bi bi-instagram text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="relative hidden lg:block">
+                    <div class="relative w-full max-w-md mx-auto">
+                        <div class="absolute -top-10 -left-10 w-32 h-32 bg-purple-300 rounded-full filter blur-xl opacity-30 animate-pulse"></div>
+                        <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-pink-300 rounded-full filter blur-xl opacity-30 animate-pulse delay-300"></div>
+                        
+                        <div class="relative w-full h-full morph bg-gradient-to-br from-purple-100 to-pink-100 p-1 rounded-[40%] shadow-2xl floating">
+                            <div class="w-full h-full bg-white rounded-[40%] overflow-hidden">
+                                <img src="IMG-20250418-WA0003(1).jpg" alt="Nirmala Khadha" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                        
+                        <div class="absolute -bottom-5 -right-5 bg-white p-4 rounded-xl shadow-xl border border-gray-100 rotate-3d">
+                            <div class="text-center">
+                                <p class="text-2xl font-bold text-purple-600 flex items-center justify-center">
+                                    <i class="bi bi-stars mr-1"></i> 1+
+                                </p>
+                                <p class="text-gray-600">Years Experience</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce z-10">
+            <a href="#about" class="w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center text-purple-600 hover:bg-purple-600 hover:text-white transition-all duration-300">
+                <i class="bi bi-chevron-down"></i>
+            </a>
+        </div>
+    </section>
+    <section id="about" class="py-20 bg-white relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-purple-50 to-transparent z-0"></div>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4 text-gradient-animate">About Me</h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto rounded-full"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="relative">
+                    <div class="gradient-border">
+                        <div class="bg-gradient-to-r from-purple-600/10 to-pink-600/10 rounded-2xl p-1 shadow-xl overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1551033406-611cf9a28f67?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Nirmala Khadha" class="rounded-2xl w-full h-auto transform transition-transform duration-500 hover:scale-105">
+                        </div>
+                    </div>
+                    
+                    <div class="absolute -bottom-5 -right-5 bg-white p-4 rounded-xl shadow-xl border border-gray-100 rotate-3d">
+                        <div class="text-center">
+                            <p class="text-2xl font-bold text-purple-600 flex items-center justify-center">
+                                <i class="bi bi-award mr-2"></i> 50+
+                            </p>
+                            <p class="text-gray-600">Projects Completed</p>
+                        </div>
+                    </div>
+                    
+                    <div class="absolute -top-5 -left-5 bg-white p-4 rounded-xl shadow-xl border border-gray-100 rotate-3d">
+                        <div class="text-center">
+                            <p class="text-2xl font-bold text-pink-600 flex items-center justify-center">
+                                <i class="bi bi-heart-fill mr-2"></i> 100%
+                            </p>
+                            <p class="text-gray-600">Client Satisfaction</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <p class="text-gray-600 mb-6 text-lg leading-relaxed">
+                        Hello I'm <span class="font-semibold text-purple-600">Nirmala Khadka</span>, a passionate Full Stack Developer with over 1 years of experience in creating modern, responsive web applications. I specialize in building seamless user experiences that combine functionality with aesthetic appeal.
+                    </p>
+                    
+                    <div class="mb-6 p-6 bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl border border-purple-100">
+                        <div class="flex items-start">
+                            <div class="text-purple-600 text-2xl mr-4">
+                                <i class="bi bi-lightbulb-fill"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-lg mb-2 text-gray-800">My Philosophy</h4>
+                                <p class="text-gray-600">
+                                    I believe in writing clean, efficient code and creating intuitive interfaces that delight users. Every pixel and every line of code matters in crafting exceptional digital experiences.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex flex-wrap gap-4">
+                        <a href="https://drive.google.com/file/d/1Q4Fti_nhwmPEqUldEUSqOn3b3bv32ADk/view?usp=sharing" class="flex items-center space-x-2 text-purple-600 hover:text-purple-800 transition-colors duration-300 bg-purple-50 px-4 py-2 rounded-lg">
+                            <i class="bi bi-file-earmark-person-fill text-xl"></i>
+                            <span>Download CV</span>
+                        </a>
+                        <a href="#contact" class="flex items-center space-x-2 text-pink-600 hover:text-pink-800 transition-colors duration-300 bg-pink-50 px-4 py-2 rounded-lg">
+                            <i class="bi bi-chat-square-text-fill text-xl"></i>
+                            <span>Let's Talk</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="absolute -bottom-40 -right-40 w-80 h-80 bg-purple-200 rounded-full filter blur-3xl opacity-20 z-0"></div>
+    </section>
+    <section id="skills" class="py-20 bg-gradient-to-b from-white to-purple-50 relative overflow-hidden">
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4 text-gradient-animate">My Skills</h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto rounded-full"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto mt-4">I've worked with a wide range of technologies in the web development world. Here are some of my core competencies.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-500 transform hover:-translate-y-2">
+                    <div class="text-center">
+                        <div class="w-20 h-20 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6 shadow-inner">
+                            <i class="bi bi-layout-text-window-reverse text-4xl text-purple-600"></i>
+                        </div>
+                        <h3 class="text-2xl font-semibold mb-4 text-gray-800">Frontend</h3>
+                        <div class="flex flex-wrap justify-center gap-3">
+                            <span class="skill-badge inline-block px-4 py-2 bg-purple-100 text-purple-600 rounded-full font-medium shadow-sm hover:shadow-md">React</span>
+                            <span class="skill-badge inline-block px-4 py-2 bg-purple-100 text-purple-600 rounded-full font-medium shadow-sm hover:shadow-md">Next.js</span>
+                            <span class="skill-badge inline-block px-4 py-2 bg-purple-100 text-purple-600 rounded-full font-medium shadow-sm hover:shadow-md">Vue.js</span>
+                            <span class="skill-badge inline-block px-4 py-2 bg-purple-100 text-purple-600 rounded-full font-medium shadow-sm hover:shadow-md">Tailwind</span>
+                            <span class="skill-badge inline-block px-4 py-2 bg-purple-100 text-purple-600 rounded-full font-medium shadow-sm hover:shadow-md">TypeScript</span>
+                            <span class="skill-badge inline-block px-4 py-2 bg-purple-100 text-purple-600 rounded-full font-medium shadow-sm hover:shadow-md">Redux</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-500 transform hover:-translate-y-2">
+                    <div class="text-center">
+                        <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6 shadow-inner">
+                            <i class="bi bi-server text-4xl text-blue-600"></i>
+                        </div>
+                        <h3 class="text-2xl font-semibold mb-4 text-gray-800">Backend</h3>
+                        <div class="flex flex-wrap justify-center gap-3">
+                            <span class="skill-badge inline-block px-4 py-2 bg-blue-100 text-blue-600 rounded-full font-medium shadow-sm hover:shadow-md">Node.js</span>
+                            <span class="skill-badge inline-block px-4 py-2 bg-blue-100 text-blue-600 rounded-full font-medium shadow-sm hover:shadow-md">Express</span>
+                            <span class="skill-badge inline-block px-4 py-2 bg-blue-100 text-blue-600 rounded-full font-medium shadow-sm hover:shadow-md">Python</span>
+                            <span class="skill-badge inline-block px-4 py-2 bg-blue-100 text-blue-600 rounded-full font-medium shadow-sm hover:shadow-md">Django</span>
+                            <span class="skill-badge inline-block px-4 py-2 bg-blue-100 text-blue-600 rounded-full font-medium shadow-sm hover:shadow-md">Flask</span>
+                            <span class="skill-badge inline-block px-4 py-2 bg-blue-100 text-blue-600 rounded-full font-medium shadow-sm hover:shadow-md">GraphQL</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-500 transform hover:-translate-y-2">
+                    <div class="text-center">
+                        <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6 shadow-inner">
+                            <i class="bi bi-database text-4xl text-green-600"></i>
+                        </div>
+                        <h3 class="text-2xl font-semibold mb-4 text-gray-800">Database</h3>
+                        <div class="flex flex-wrap justify-center gap-3">
+                            <span class="skill-badge inline-block px-4 py-2 bg-green-100 text-green-600 rounded-full font-medium shadow-sm hover:shadow-md">MongoDB</span>
+                            <span class="skill-badge inline-block px-4 py-2 bg-green-100 text-green-600 rounded-full font-medium shadow-sm hover:shadow-md">PostgreSQL</span>
+                            <span class="skill-badge inline-block px-4 py-2 bg-green-100 text-green-600 rounded-full font-medium shadow-sm hover:shadow-md">Firebase</span>
+                            <span class="skill-badge inline-block px-4 py-2 bg-green-100 text-green-600 rounded-full font-medium shadow-sm hover:shadow-md">MySQL</span>
+                            <span class="skill-badge inline-block px-4 py-2 bg-green-100 text-green-600 rounded-full font-medium shadow-sm hover:shadow-md">Redis</span>
+                            <span class="skill-badge inline-block px-4 py-2 bg-green-100 text-green-600 rounded-full font-medium shadow-sm hover:shadow-md">Prisma</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-500 transform hover:-translate-y-2">
+                    <div class="text-center">
+                        <div class="w-20 h-20 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-6 shadow-inner">
+                            <i class="bi bi-tools text-4xl text-yellow-600"></i>
+                        </div>
+                        <h3 class="text-2xl font-semibold mb-4 text-gray-800">DevOps & More</h3>
+                        <div class="flex flex-wrap justify-center gap-3">
+                            <span class="skill-badge inline-block px-4 py-2 bg-yellow-100 text-yellow-600 rounded-full font-medium shadow-sm hover:shadow-md">Docker</span>
+                            <span class="skill-badge inline-block px-4 py-2 bg-yellow-100 text-yellow-600 rounded-full font-medium shadow-sm hover:shadow-md">Kubernetes</span>
+                            <span class="skill-badge inline-block px-4 py-2 bg-yellow-100 text-yellow-600 rounded-full font-medium shadow-sm hover:shadow-md">AWS</span>
+                            <span class="skill-badge inline-block px-4 py-2 bg-yellow-100 text-yellow-600 rounded-full font-medium shadow-sm hover:shadow-md">Git</span>
+                            <span class="skill-badge inline-block px-4 py-2 bg-yellow-100 text-yellow-600 rounded-full font-medium shadow-sm hover:shadow-md">CI/CD</span>
+                            <span class="skill-badge inline-block px-4 py-2 bg-yellow-100 text-yellow-600 rounded-full font-medium shadow-sm hover:shadow-md">Figma</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-16 bg-white p-8 rounded-2xl shadow-lg">
+                <h3 class="text-2xl font-semibold mb-6 text-center text-gray-800">My Skill Level</h3>
+                <div class="space-y-6">
+                    <div>
+                        <div class="flex justify-between mb-2">
+                            <span class="font-medium text-gray-700">Frontend Development</span>
+                            <span class="font-medium text-purple-600">95%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-3">
+                            <div class="bg-gradient-to-r from-purple-500 to-pink-500 h-3 rounded-full" style="width: 95%"></div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div class="flex justify-between mb-2">
+                            <span class="font-medium text-gray-700">Backend Development</span>
+                            <span class="font-medium text-blue-600">90%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-3">
+                            <div class="bg-gradient-to-r from-blue-500 to-purple-500 h-3 rounded-full" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div class="flex justify-between mb-2">
+                            <span class="font-medium text-gray-700">UI/UX Design</span>
+                            <span class="font-medium text-pink-600">85%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-3">
+                            <div class="bg-gradient-to-r from-pink-500 to-purple-500 h-3 rounded-full" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div class="flex justify-between mb-2">
+                            <span class="font-medium text-gray-700">DevOps & Cloud</span>
+                            <span class="font-medium text-yellow-600">80%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-3">
+                            <div class="bg-gradient-to-r from-yellow-500 to-orange-500 h-3 rounded-full" style="width: 80%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="absolute top-1/4 left-10 w-16 h-16 rounded-full bg-purple-200/30 blur-xl animate-pulse"></div>
+        <div class="absolute bottom-1/3 right-20 w-24 h-24 rounded-full bg-pink-200/30 blur-xl animate-pulse delay-500"></div>
+    </section>
+    <section id="projects" class="py-20 bg-white relative overflow-hidden">
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4 text-gradient-animate">Featured Projects</h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto rounded-full"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto mt-4">Here are some of my recent projects. Each one was carefully crafted to solve specific problems and deliver exceptional user experiences.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="project-card bg-white rounded-2xl shadow-lg overflow-hidden relative">
+                    <div class="relative h-60 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Project 1" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-6">
+                            <h3 class="text-xl font-semibold text-white mb-1">E-Commerce Platform</h3>
+                            <p class="text-purple-200">Full Stack Development</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600 mb-4">A complete e-commerce solution with React, Node.js, and MongoDB featuring product management, cart functionality, and secure payments.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-purple-100 text-purple-600 rounded-full text-sm">React</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">Node.js</span>
+                            <span class="px-3 py-1 bg-green-100 text-green-600 rounded-full text-sm">MongoDB</span>
+                            <span class="px-3 py-1 bg-pink-100 text-pink-600 rounded-full text-sm">Stripe API</span>
+                        </div>
+                    </div>
+                    <div class="project-links absolute inset-0 flex items-center justify-center space-x-6">
+                        <a href="#" class="w-14 h-14 rounded-full bg-white flex items-center justify-center text-purple-600 hover:bg-purple-600 hover:text-white transition-all duration-300 transform hover:scale-110">
+                            <i class="bi bi-github text-xl"></i>
+                        </a>
+                        <a href="#" class="w-14 h-14 rounded-full bg-white flex items-center justify-center text-blue-600 hover:bg-blue-600 hover:text-white transition-all duration-300 transform hover:scale-110">
+                            <i class="bi bi-box-arrow-up-right text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="project-card bg-white rounded-2xl shadow-lg overflow-hidden relative">
+                    <div class="relative h-60 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Project 2" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-6">
+                            <h3 class="text-xl font-semibold text-white mb-1">Task Management App</h3>
+                            <p class="text-blue-200">Productivity Tool</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600 mb-4">A collaborative task management application with real-time updates, drag-and-drop interface, and team collaboration features.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-purple-100 text-purple-600 rounded-full text-sm">Next.js</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">Firebase</span>
+                            <span class="px-3 py-1 bg-yellow-100 text-yellow-600 rounded-full text-sm">Tailwind</span>
+                            <span class="px-3 py-1 bg-green-100 text-green-600 rounded-full text-sm">Real-time DB</span>
+                        </div>
+                    </div>
+                    <div class="project-links absolute inset-0 flex items-center justify-center space-x-6">
+                        <a href="#" class="w-14 h-14 rounded-full bg-white flex items-center justify-center text-purple-600 hover:bg-purple-600 hover:text-white transition-all duration-300 transform hover:scale-110">
+                            <i class="bi bi-github text-xl"></i>
+                        </a>
+                        <a href="#" class="w-14 h-14 rounded-full bg-white flex items-center justify-center text-blue-600 hover:bg-blue-600 hover:text-white transition-all duration-300 transform hover:scale-110">
+                            <i class="bi bi-box-arrow-up-right text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="project-card bg-white rounded-2xl shadow-lg overflow-hidden relative">
+                    <div class="relative h-60 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1617791160536-598cf32026fb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1064&q=80" alt="Project 3" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-6">
+                            <h3 class="text-xl font-semibold text-white mb-1">AI Chat Application</h3>
+                            <p class="text-pink-200">AI Integration</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600 mb-4">Real-time chat app with AI integration, sentiment analysis, and personalized recommendations using machine learning.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-purple-100 text-purple-600 rounded-full text-sm">Python</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">TensorFlow</span>
+                            <span class="px-3 py-1 bg-green-100 text-green-600 rounded-full text-sm">Flask</span>
+                            <span class="px-3 py-1 bg-pink-100 text-pink-600 rounded-full text-sm">NLP</span>
+                        </div>
+                    </div>
+                    <div class="project-links absolute inset-0 flex items-center justify-center space-x-6">
+                        <a href="#" class="w-14 h-14 rounded-full bg-white flex items-center justify-center text-purple-600 hover:bg-purple-600 hover:text-white transition-all duration-300 transform hover:scale-110">
+                            <i class="bi bi-github text-xl"></i>
+                        </a>
+                        <a href="#" class="w-14 h-14 rounded-full bg-white flex items-center justify-center text-blue-600 hover:bg-blue-600 hover:text-white transition-all duration-300 transform hover:scale-110">
+                            <i class="bi bi-box-arrow-up-right text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#" class="inline-flex items-center px-8 py-3 border-2 border-purple-600 text-purple-600 rounded-full hover:bg-purple-600 hover:text-white transition-all duration-300 hover:shadow-lg group">
+                    View All Projects
+                    <i class="bi bi-arrow-right ml-2 group-hover:translate-x-1 transition-transform duration-300"></i>
+                </a>
+            </div>
+        </div>
+        <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-pink-200 rounded-full filter blur-3xl opacity-20 z-0"></div>
+    </section>
+    <section class="py-20 bg-gradient-to-b from-purple-50 to-white relative overflow-hidden">
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4 text-gradient-animate">Client Testimonials</h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto rounded-full"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto mt-4">Don't just take my word for it. Here's what clients and colleagues have to say about working with me.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-500 transform hover:-translate-y-2">
+                    <div class="flex items-center mb-6">
+                        <img src="https://randomuser.me/api/portraits/women/43.jpg" alt="Client" class="w-16 h-16 rounded-full object-cover mr-4 border-4 border-purple-100">
+                        <div>
+                            <h4 class="font-semibold text-lg">Sarah Johnson</h4>
+                            <p class="text-gray-500 text-sm">CEO, TechSolutions</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic mb-6">"Nirmala transformed our e-commerce platform with her exceptional frontend skills. Her attention to detail and problem-solving abilities are remarkable. She delivered beyond our expectations."</p>
+                    <div class="flex text-yellow-400">
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                    </div>
+                    <div class="absolute top-4 right-4 text-purple-200 text-5xl opacity-30">
+                        <i class="bi bi-quote"></i>
+                    </div>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-500 transform hover:-translate-y-2">
+                    <div class="flex items-center mb-6">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Client" class="w-16 h-16 rounded-full object-cover mr-4 border-4 border-blue-100">
+                        <div>
+                            <h4 class="font-semibold text-lg">Michael Chen</h4>
+                            <p class="text-gray-500 text-sm">CTO, InnovateX</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic mb-6">"Working with Nirmala was a game-changer for our project. Her full-stack expertise and ability to understand complex requirements made her an invaluable team member. Highly recommended!"</p>
+                    <div class="flex text-yellow-400">
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-half"></i>
+                    </div>
+                    <div class="absolute top-4 right-4 text-blue-200 text-5xl opacity-30">
+                        <i class="bi bi-quote"></i>
+                    </div>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-500 transform hover:-translate-y-2">
+                    <div class="flex items-center mb-6">
+                        <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Client" class="w-16 h-16 rounded-full object-cover mr-4 border-4 border-pink-100">
+                        <div>
+                            <h4 class="font-semibold text-lg">Priya Patel</h4>
+                            <p class="text-gray-500 text-sm">Product Manager, DesignHub</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic mb-6">"Nirmala's UI/UX design skills are exceptional. She took our vague ideas and turned them into beautiful, functional interfaces that our users love. Her development skills are equally impressive."</p>
+                    <div class="flex text-yellow-400">
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                    </div>
+                    <div class="absolute top-4 right-4 text-pink-200 text-5xl opacity-30">
+                        <i class="bi bi-quote"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="absolute top-1/3 left-1/4 w-24 h-24 rounded-full bg-purple-200/30 blur-xl animate-pulse"></div>
+        <div class="absolute bottom-1/4 right-1/3 w-32 h-32 rounded-full bg-pink-200/30 blur-xl animate-pulse delay-300"></div>
+    </section>
+    <section id="contact" class="py-20 bg-gradient-to-r from-purple-600 to-pink-600 relative overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <div class="absolute top-0 left-0 w-full h-full bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10"></div>
+        </div>
+        
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4 text-white">Let's Work Together</h2>
+                <div class="w-20 h-1 bg-white mx-auto rounded-full"></div>
+                <p class="text-purple-100 max-w-2xl mx-auto mt-4">Have a project in mind or want to discuss potential opportunities? I'd love to hear from you!</p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div class="text-white">
+                    <h3 class="text-2xl font-semibold mb-6">Contact Information</h3>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start space-x-6">
+                            <div class="w-14 h-14 rounded-full bg-white/10 flex items-center justify-center text-xl backdrop-blur-sm">
+                                <i class="bi bi-envelope-fill"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-lg mb-1">Email</h4>
+                                <a href="mailto:nirmala@example.com" class="text-purple-100 hover:text-white transition-colors duration-300">khadkanirmala237@gmail.com</a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-6">
+                            <div class="w-14 h-14 rounded-full bg-white/10 flex items-center justify-center text-xl backdrop-blur-sm">
+                                <i class="bi bi-geo-alt-fill"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-lg mb-1">Location</h4>
+                                <p class="text-purple-100">Bangalore, India</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-6">
+                            <div class="w-14 h-14 rounded-full bg-white/10 flex items-center justify-center text-xl backdrop-blur-sm">
+                                <i class="bi bi-phone-fill"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-lg mb-1">Phone</h4>
+                                <a href="tel:+91xxxxxxxxxx" class="text-purple-100 hover:text-white transition-colors duration-300">+91 xxxxxxxxxx</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-12">
+                        <h4 class="font-medium text-lg mb-6">Follow Me</h4>
+                        <div class="flex space-x-4">
+                            <a href="#" class="w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white hover:text-purple-600 transition-colors duration-300 transform hover:-translate-y-1">
+                                <i class="bi bi-github"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white hover:bg-blue-600 transition-colors duration-300 transform hover:-translate-y-1">
+                                <i class="bi bi-linkedin"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white hover:bg-sky-400 transition-colors duration-300 transform hover:-translate-y-1">
+                                <i class="bi bi-twitter"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white hover:bg-pink-600 transition-colors duration-300 transform hover:-translate-y-1">
+                                <i class="bi bi-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-8 rounded-2xl shadow-2xl">
+                    <h3 class="text-2xl font-semibold mb-6 text-gray-800">Send Me a Message</h3>
+                    <form id="contact-form" class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-gray-700 mb-2 font-medium" for="name">Name</label>
+                                <input type="text" id="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent transition-all duration-300" required>
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 mb-2 font-medium" for="email">Email</label>
+                                <input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent transition-all duration-300" required>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2 font-medium" for="subject">Subject</label>
+                            <input type="text" id="subject" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent transition-all duration-300" required>
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2 font-medium" for="message">Message</label>
+                            <textarea id="message" rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent transition-all duration-300" required></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white px-6 py-4 rounded-lg hover:from-purple-700 hover:to-pink-700 transition-all duration-500 shadow-lg hover:shadow-xl flex items-center justify-center">
+                            <span id="submit-text">Send Message</span>
+                            <i id="submit-icon" class="bi bi-send-fill ml-3"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="absolute top-20 left-1/4 w-24 h-24 rounded-full bg-purple-400/20 blur-xl animate-pulse"></div>
+        <div class="absolute bottom-20 right-1/3 w-32 h-32 rounded-full bg-pink-400/20 blur-xl animate-pulse delay-500"></div>
+    </section>
+    <footer class="bg-gray-900 text-white py-12 relative overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <div class="absolute top-0 left-0 w-full h-full bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10"></div>
+        </div>
+        
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+                <div>
+                    <div class="text-2xl font-bold mb-4 gradient-text flex items-center">
+                        <span class="bg-gradient-to-r from-purple-600 to-pink-600 text-white p-2 rounded-lg mr-2">NK</span>
+                        Nirmala Khadka
+                    </div>
+                    <p class="text-gray-400 mb-6">Full Stack Developer & UI/UX Designer creating beautiful, functional digital experiences.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 hover:bg-purple-600 text-white flex items-center justify-center transition-colors duration-300">
+                            <i class="bi bi-github"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 hover:bg-blue-600 text-white flex items-center justify-center transition-colors duration-300">
+                            <i class="bi bi-linkedin"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 hover:bg-sky-400 text-white flex items-center justify-center transition-colors duration-300">
+                            <i class="bi bi-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 hover:bg-pink-600 text-white flex items-center justify-center transition-colors duration-300">
+                            <i class="bi bi-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4 text-white">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#home" class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Home</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-purple-400 transition-colors duration-300">About</a></li>
+                        <li><a href="#skills" class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Skills</a></li>
+                        <li><a href="#projects" class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Projects</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4 text-white">Services</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Web Development</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-purple-400 transition-colors duration-300">UI/UX Design</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Mobile Apps</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-purple-400 transition-colors duration-300">API Development</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Consulting</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4 text-white">Newsletter</h4>
+                    <p class="text-gray-400 mb-4">Subscribe to my newsletter for the latest updates and insights.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Your email" class="px-4 py-2 rounded-l-lg focus:outline-none text-gray-800 w-full">
+                        <button type="submit" class="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-4 py-2 rounded-r-lg hover:from-purple-700 hover:to-pink-700 transition-all duration-300">
+                            <i class="bi bi-send"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center">
+                <p class="text-gray-400">&copy; 2025 Nirmala Khadka. All rights reserved.</p>
+                <div class="flex justify-center space-x-6 mt-4">
+                    <a href="#" class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Privacy Policy</a>
+                    <a href="#" class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Terms of Service</a>
+                    <a href="#" class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Sitemap</a>
+                </div>
+            </div>
+        </div>
+        <div class="absolute top-1/4 left-1/4 w-16 h-16 rounded-full bg-purple-600/10 blur-xl animate-pulse"></div>
+        <div class="absolute bottom-1/3 right-1/3 w-24 h-24 rounded-full bg-pink-600/10 blur-xl animate-pulse delay-300"></div>
+    </footer>
+    <button id="back-to-top" class="fixed bottom-8 right-8 w-14 h-14 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hidden z-50 flex items-center justify-center">
+        <i class="bi bi-arrow-up text-xl"></i>
+    </button>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script>
+        particlesJS("particles-js", {
+            "particles": {
+                "number": {
+                    "value": 80,
+                    "density": {
+                        "enable": true,
+                        "value_area": 800
+                    }
+                },
+                "color": {
+                    "value": "#8b5cf6"
+                },
+                "shape": {
+                    "type": "circle",
+                    "stroke": {
+                        "width": 0,
+                        "color": "#000000"
+                    },
+                    "polygon": {
+                        "nb_sides": 5
+                    }
+                },
+                "opacity": {
+                    "value": 0.3,
+                    "random": true,
+                    "anim": {
+                        "enable": false,
+                        "speed": 1,
+                        "opacity_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "size": {
+                    "value": 3,
+                    "random": true,
+                    "anim": {
+                        "enable": false,
+                        "speed": 40,
+                        "size_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#8b5cf6",
+                    "opacity": 0.2,
+                    "width": 1
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 2,
+                    "direction": "none",
+                    "random": true,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false,
+                    "attract": {
+                        "enable": false,
+                        "rotateX": 600,
+                        "rotateY": 1200
+                    }
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "grab"
+                    },
+                    "onclick": {
+                        "enable": true,
+                        "mode": "push"
+                    },
+                    "resize": true
+                },
+                "modes": {
+                    "grab": {
+                        "distance": 140,
+                        "line_linked": {
+                            "opacity": 0.5
+                        }
+                    },
+                    "bubble": {
+                        "distance": 400,
+                        "size": 40,
+                        "duration": 2,
+                        "opacity": 8,
+                        "speed": 3
+                    },
+                    "repulse": {
+                        "distance": 200,
+                        "duration": 0.4
+                    },
+                    "push": {
+                        "particles_nb": 4
+                    },
+                    "remove": {
+                        "particles_nb": 2
+                    }
+                }
+            },
+            "retina_detect": true
+        });
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+        document.getElementById('contact-form')?.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const submitBtn = document.querySelector('#contact-form button[type="submit"]');
+            const submitText = document.getElementById('submit-text');
+            const submitIcon = document.getElementById('submit-icon');
+            submitText.textContent = 'Sending...';
+            submitIcon.classList.remove('bi-send-fill');
+            submitIcon.classList.add('bi-arrow-repeat', 'animate-spin');
+            setTimeout(() => {
+                submitText.textContent = 'Message Sent!';
+                submitIcon.classList.remove('bi-arrow-repeat', 'animate-spin');
+                submitIcon.classList.add('bi-check-circle-fill');
+                setTimeout(() => {
+                    this.reset();
+                    submitText.textContent = 'Send Message';
+                    submitIcon.classList.remove('bi-check-circle-fill');
+                    submitIcon.classList.add('bi-send-fill');
+                }, 2000);
+            }, 1500);
+        });
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                if (window.innerWidth < 768) {
+                    document.getElementById('mobile-menu').classList.add('hidden');
+                }
+            });
+        });
+        const backToTopButton = document.getElementById('back-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.remove('hidden');
+            } else {
+                backToTopButton.classList.add('hidden');
+            }
+        });
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.project-card, .skill-badge, .testimonial');
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (elementPosition < screenPosition) {
+                    element.classList.add('animate__animated', 'animate__fadeInUp');
+                }
+            });
+        };
+        window.addEventListener('scroll', animateOnScroll);
+        animateOnScroll(); 
+        const heading = document.querySelector('#home h1');
+        if (heading) {
+            heading.innerHTML = heading.textContent.replace(/\S/g, "<span class='wave'>$&</span>");
+        }
+        const floatingElements = document.querySelectorAll('.floating-element');
+        floatingElements.forEach((el, index) => {
+            el.style.animationDelay = `${index * 0.2}s`;
+        });
+        const gradientTexts = document.querySelectorAll('.text-gradient-animate');
+        gradientTexts.forEach(text => {
+            text.style.backgroundSize = '200% auto';
+        });
+    </script>
+</body>
+</html>
